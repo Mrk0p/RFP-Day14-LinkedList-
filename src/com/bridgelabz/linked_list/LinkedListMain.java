@@ -25,6 +25,16 @@ public class LinkedListMain {
 
         System.out.println("Element popped from head => " + linkedList2.pop());
         linkedList2.display();
+        System.out.println();
+
+        linkedList2.add(56);
+        linkedList2.display();
+        System.out.println();
+
+        System.out.println("Element popped from last => " + linkedList2.popLast());
+        linkedList2.display();
+
+
 
     }
 
@@ -69,6 +79,16 @@ public class LinkedListMain {
         public E pop() {
             E temp = head.getData();
             head = head.getNext();
+            return temp;
+        }
+        public E popLast() {
+            E temp = tail.getData();
+            Node<E> secondLast = head;
+            while(secondLast.getNext() != tail){
+                secondLast = secondLast.getNext();
+            }
+            secondLast.setNext(null);
+            tail = secondLast;
             return temp;
         }
 
