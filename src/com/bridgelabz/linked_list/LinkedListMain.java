@@ -1,5 +1,7 @@
 package com.bridgelabz.linked_list;
 
+import org.w3c.dom.Node;
+
 import java.util.LinkedList;
 
 public class LinkedListMain {
@@ -33,8 +35,19 @@ public class LinkedListMain {
 
         System.out.println("Element popped from last => " + linkedList2.popLast());
         linkedList2.display();
+        System.out.println();
+
+        linkedList2.append(70);
+        linkedList2.display();
+        System.out.println();
 
 
+        if (linkedList2.search(30) !=null) {
+            System.out.println("data found");
+        }
+        else {
+            System.out.println("data not found");
+        }
 
     }
 
@@ -90,6 +103,16 @@ public class LinkedListMain {
             secondLast.setNext(null);
             tail = secondLast;
             return temp;
+        }
+        public Node<E> search(E searchData) {
+            Node<E> temp = head;
+            while (temp != null) {
+                if (temp.getData().equals(searchData)) {
+                    return temp;
+                }
+                temp = temp.getNext();
+            }
+            return null;
         }
 
         public static class Node<E> {
