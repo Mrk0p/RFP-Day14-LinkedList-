@@ -1,9 +1,5 @@
 package com.bridgelabz.linked_list;
 
-import org.w3c.dom.Node;
-
-import java.util.LinkedList;
-
 public class LinkedListMain {
 
     public static void main(String[] args) {
@@ -47,6 +43,15 @@ public class LinkedListMain {
         }
         else {
             System.out.println("data not found");
+        }
+        System.out.println();
+
+        if (linkedList1.insertAfter(30,45)){
+            System.out.println("Valid insertion ");
+            linkedList1.display();
+        }
+        else {
+            System.out.println("Invalid insertion ");
         }
 
     }
@@ -113,6 +118,16 @@ public class LinkedListMain {
                 temp = temp.getNext();
             }
             return null;
+        }
+        public boolean insertAfter(E searchData, E insertData) {
+            if (search(searchData) != null){
+                Node<E> nextNode = search(searchData).getNext();
+                Node<E> newNode = new Node<>(insertData);
+                search(searchData).setNext(newNode);
+                newNode.setNext(nextNode);
+                return true;
+            }
+            return false;
         }
 
         public static class Node<E> {
